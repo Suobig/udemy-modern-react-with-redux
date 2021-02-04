@@ -20,13 +20,3 @@ Initialize: `this.state = { ... }` in the constructor.
 Change: `this.setState({ ... })`. Whenever changed - component rerenders.
 
 We don't have to define our `state` in constructor. We can just write `state = { ... }` outside the constructor, and, if we have nothing else - get rid of constructor!
-
-## Lifecycle
-
-- `constructor` - good place to do one-time setup, but doing data loading is not recommended - do it in `componentDidMount`;
-- `render` - avoid doing anything besides returning JSX;
-- `componentDidMount` - good place to do data-loading!;
-- `componentDidUpdate` good place to do more data-loading when state/props change;
-- `componentWillUnmount` - good place to do clean-up;
-
-## Passing state with props
