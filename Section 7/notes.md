@@ -25,6 +25,11 @@ What the app has to do:
 
 ## Handling events
 
+There're 2 main ways to handle events:
+
+- pass a handler function
+- create arrow function right inside JSX
+
 Useful events:
 
 - `onChange` - when user changes text in an input
@@ -41,4 +46,27 @@ For example:
 - `onInputChange`
 - `onButtonClick`
 - etc.
+
+## Controlled and Uncontrolled elements
+
+"Controlled" means that its value is being controlled by a `state` object. This basically moves the source of information about current state of an element from DOM (Where we would seek it with uncontrolled components) to React.
+
+We want all our elements to be controlled by React.
+
+## this in React
+
+Each class-based react component has a set of methods like `render()` and a set of properties like `state`, `this`. `this` is a reference to the instance of the class itself.
+
+When a method is called, it's relative to an object, that called that method, basically to anything that's written left to a `.` at a place that method is called.
+
+Ways to solve it:
+
+1. write `this.myMethod = this.myMethod.bind(this)` in constructor. This works fine but currently outdated.
+2. replace a traditional method description as an arrow function - it automatically binds `this` to class context.
+3. trigger event handler through an arrow function. Example: `<form onSubmit={ e => this.onFormSubmit(e) }></form>`
+
+In this course we'll default to using arrow function handlers.
+
+## Communicating child to parents
+
 
