@@ -69,4 +69,4 @@ In this course we'll default to using arrow function handlers.
 
 ## Communicating child to parents
 
-
+One way to make a child communicate to a parent is to pass a function to child's props and make child invoke that function whenever he feels necessary.
