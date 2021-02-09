@@ -22,3 +22,8 @@ We want to build a small app that shows a number of comments with image, name, t
 - create a new file to house this new component with the same name as the component;
 - create new component if this file
 - make it configurable through `props` system
+
+## 2 Types of Props
+
+1. Props you pass as attributes: `<MyComponent attribute1="value1" attribute2="value2" />` can be accessed by name: `props.attribute1 === value1; props.attribute2 === value2`
+2. Props you pass as child elements of Component's element: `<MyComponent>Some Text</MyComponent>` can be accessed by the name `children`: `props.children === "SomeText`
