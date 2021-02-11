@@ -8,6 +8,7 @@ import ImageList from "./ImageList";
 class App extends React.Component {
   state = { images: []   }
 
+
   onSearchSumbit = async (term) => {
     const options = {
       url: 'https://bing-image-search1.p.rapidapi.com/images/search',
@@ -15,7 +16,18 @@ class App extends React.Component {
     };
     
     const response = await rapidapi.request(options);
-    this.setState({ images: response.data.value.map(it => it.thumbnailUrl) });
+    console.log(response);
+    this.setState({ images: response.data.value.map(responseValueMapper) });
+
+    function responseValueMapper(value) {
+      return {
+        shortName: value.hostPageDomainFriendlyName || value,
+        name: value.name,
+        thumnailUrl: value.thumbnailUrl,
+        imageUrl: value.contentUrl,
+        hostUrl: value.hostPageUrl
+      }
+    }
   }
 
   render() {

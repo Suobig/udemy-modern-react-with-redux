@@ -1,6 +1,7 @@
 import React from 'react';
 
-const ImageList = () => {
+const ImageList = (props) => {
+  const images = props.images.map(image => <li><img src={image.thumbnailUrl}/></li>)
   return <div>ImageList</div>
 }
 
