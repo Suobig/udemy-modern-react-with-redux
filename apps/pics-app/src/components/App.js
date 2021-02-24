@@ -23,7 +23,8 @@ class App extends React.Component {
       return {
         shortName: value.hostPageDomainFriendlyName || value,
         name: value.name,
-        thumnailUrl: value.thumbnailUrl,
+        id: value.imageId,
+        thumbnailUrl: value.thumbnailUrl,
         imageUrl: value.contentUrl,
         hostUrl: value.hostPageUrl
       }
