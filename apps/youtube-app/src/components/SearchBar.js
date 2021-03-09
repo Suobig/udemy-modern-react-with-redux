@@ -1,7 +1,7 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-  state = { term: 'Test' };
+  state = { term: '' };
 
   onInputChange = ({ target }) => {
     this.setState({ term: target.value });
@@ -9,13 +9,13 @@ class SearchBar extends React.Component {
 
   onFormSubmit = ( event ) => {
     event.preventDefault();
-    //TODO: make sure we call callback from parent component;
+    this.props.onFormSubmit( this.state.term );
   }
 
   render() {
     return (
       <div className="search-bar ui segment">
-        <div onSubmit={ this.onFormSubmit } className="ui form">
+        <form onSubmit={ this.onFormSubmit } className="ui form">
           <div className="ui field">
             <input 
               type="text"
@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
               onChange = { this.onInputChange }
             />
           </div>
-        </div>
+        </form>
       </div>
     )
   }
