@@ -1,4 +1,4 @@
 .DS_Store
 .vscode
-apps/pics-app/node_modules
-apps/pics-app/dist
+apps/*/node_modules
+apps/*/dist
