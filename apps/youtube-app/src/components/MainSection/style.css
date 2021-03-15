@@ -1,0 +1,6 @@
+#main {
+  display: grid;
+  grid-template-columns: minmax(350px, 1fr) 350px;
+  padding: 0 150px;
+  overflow: hidden;
+}
