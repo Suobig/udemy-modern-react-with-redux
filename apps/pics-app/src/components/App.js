@@ -1,20 +1,20 @@
-import React from 'react';
-import rapidapi from '../api/rapidapi';
+import React from "react";
+import rapidapi from "../api/rapidapi";
 
 import "./App.css";
 import SearchBar from "./SearchBar";
 import ImageList from "./ImageList";
 
 class App extends React.Component {
-  state = { images: []   }
-
+  state = { images: [] };
 
   onSearchSumbit = async (term) => {
+    console.log("async search");
     const options = {
-      url: 'https://bing-image-search1.p.rapidapi.com/images/search',
-      params: {q: term}
+      url: "https://bing-image-search1.p.rapidapi.com/images/search",
+      params: { q: term },
     };
-    
+
     const response = await rapidapi.request(options);
     console.log(response);
     this.setState({ images: response.data.value.map(responseValueMapper) });
@@ -26,16 +26,19 @@ class App extends React.Component {
         id: value.imageId,
         thumbnailUrl: value.thumbnailUrl,
         imageUrl: value.contentUrl,
-        hostUrl: value.hostPageUrl
-      }
+        hostUrl: value.hostPageUrl,
+      };
     }
-  }
+  };
 
   render() {
     return (
       <div className="App ui container">
-        <SearchBar onSubmit={this.onSearchSumbit} placeholder="Search images..." />
-        <ImageList images = {this.state.images}/>
+        <SearchBar
+          onSubmit={this.onSearchSumbit}
+          placeholder="Search images..."
+        />
+        <ImageList images={this.state.images} />
       </div>
     );
   }

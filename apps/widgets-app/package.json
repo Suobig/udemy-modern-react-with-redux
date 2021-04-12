@@ -1,7 +1,7 @@
 {
-  "name": "widgets-app",
+  "name": "pics-app",
   "version": "1.0.0",
-  "description": "Udemy react & redux widget project",
+  "description": "Test project for searching for pics",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
