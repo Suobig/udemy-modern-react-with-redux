@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import _, { random } from 'lodash'
 
 import jsonPlaceholder from '../apis/jsonPlaceholer'
 
@@ -8,13 +8,18 @@ export const fetchPosts = () => async (dispatch) => {
 
 	const userDictionary = await fetchUserDictionary()
 
-	const randomPostsWithUsers = randomPosts.map((post) => {
-		const newPost = {
-			...post,
-			user: userDictionary[post.userId],
-		}
-		return _.omit(newPost, 'userId')
-	})
+	const randomPostsWithUsers = randomPosts
+		.map((post) => {
+			const newPost = {
+				...post,
+				user: userDictionary[post.userId],
+			}
+			return _.omit(newPost, 'userId')
+		})
+		.sort((a, b) => {
+			if (a.user.id !== b.user.id) return a.user.id - b.user.id
+			return a.id - b.id
+		})
 
 	dispatch({
 		type: 'FETCH_POSTS',

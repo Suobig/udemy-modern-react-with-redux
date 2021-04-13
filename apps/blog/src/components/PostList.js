@@ -17,16 +17,23 @@ export const PostList = (props) => {
 	const renderPosts = useMemo(() => {
 		return posts.map(({ id, title, body, user }) => {
 			return (
-				<div key={id} className="ui segment">
-					<div className="ui header">{title}</div>
-					<div className="">{body}</div>
-					<div>{`${user.name} (${user.email})`}</div>
+				<div key={id} className="item">
+					<i className="huge middle aligned icon user" />
+					<div className="content">
+						<div className="description">
+							<h2>{title}</h2>
+							<p>{body}</p>
+							<div className="extra right floated">
+								<em>{`by ${user.name} (${user.email})`}</em>
+							</div>
+						</div>
+					</div>
 				</div>
 			)
 		})
 	}, [posts])
 
-	return <div className="ui items">{renderPosts}</div>
+	return <div className="ui relaxed divided list">{renderPosts}</div>
 }
 
 const mapStateToProps = (state) => ({
