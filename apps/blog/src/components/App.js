@@ -3,9 +3,9 @@ import PostList from './PostList'
 
 const App = () => {
 	return (
-		<h1 className="ui container">
+		<div className="ui container">
 			<PostList />
-		</h1>
+		</div>
 	)
 }
 
