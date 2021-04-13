@@ -15,11 +15,12 @@ export const PostList = (props) => {
 	}, [fetchPosts, clearPosts])
 
 	const renderPosts = useMemo(() => {
-		return posts.map(({ id, title, body }) => {
+		return posts.map(({ id, title, body, user }) => {
 			return (
-				<div key={id} className="ui item">
+				<div key={id} className="ui segment">
 					<div className="ui header">{title}</div>
-					<div className="ui content">{body}</div>
+					<div className="">{body}</div>
+					<div>{`${user.name} (${user.email})`}</div>
 				</div>
 			)
 		})
