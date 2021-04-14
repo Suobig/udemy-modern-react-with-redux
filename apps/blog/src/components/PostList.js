@@ -1,21 +1,22 @@
 import React, { useEffect, useMemo } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchPosts, clearPosts } from '../actions'
+import { clearPosts, fetchPostsAndUsers } from '../actions'
+import UserInfo from './UserInfo'
 
 export const PostList = (props) => {
-	const { fetchPosts, clearPosts, posts } = props
+	const { fetchPostsAndUsers, clearPosts, posts } = props
 
 	useEffect(() => {
-		fetchPosts()
+		fetchPostsAndUsers()
 
 		return () => {
 			clearPosts()
 		}
-	}, [fetchPosts, clearPosts])
+	}, [fetchPostsAndUsers, clearPosts])
 
 	const renderPosts = useMemo(() => {
-		return posts.map(({ id, title, body, user }) => {
+		return posts.map(({ id, userId, title, body }) => {
 			return (
 				<div key={id} className="item">
 					<i className="huge middle aligned icon user" />
@@ -23,9 +24,7 @@ export const PostList = (props) => {
 						<div className="description">
 							<h2>{title}</h2>
 							<p>{body}</p>
-							<div className="extra right floated">
-								<em>{`by ${user.name} (${user.email})`}</em>
-							</div>
+							<UserInfo userId={userId} />
 						</div>
 					</div>
 				</div>
@@ -41,7 +40,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-	fetchPosts,
+	fetchPostsAndUsers,
 	clearPosts,
 }
 
